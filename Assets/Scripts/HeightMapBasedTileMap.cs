@@ -4,15 +4,21 @@ using UnityEngine;
 
 namespace CustomTileMap
 {
-    internal class HeightMapBasedTileMap : ITileMap
+    public class HeightMapBasedTileMap : ITileMap
     {
         public int Count => heights.Sum();
 
-        private int[] heights;
+        public int Height => heights.Max();
 
-        public HeightMapBasedTileMap(int width)
+        public int Width => heights.Length;
+
+        private int[] heights;
+        private ICell cell;
+
+        public HeightMapBasedTileMap(int width, ICell cell)
         {
             heights = new int[width];
+            this.cell = cell;
         }
 
         public void SetHeight(int x, int value)
@@ -27,7 +33,19 @@ namespace CustomTileMap
 
         public ICell GetGetCell(Vector2Int position)
         {
-            throw new System.NotImplementedException();
+            if (position.x < 0 && position.x >= heights.Length)
+            {
+                throw new ArgumentOutOfRangeException("x");
+            }
+
+            if (position.y <= heights[position.x])
+            {
+                return cell;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

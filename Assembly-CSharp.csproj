@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\BagUI.cs" />
     <Compile Include="Assets\Scripts\Cap.cs" />
     <Compile Include="Assets\Scripts\DropedItem.cs" />
+    <Compile Include="Assets\Scripts\GroundTile.cs" />
     <Compile Include="Assets\Scripts\HeightMapBasedTileMap.cs" />
     <Compile Include="Assets\Scripts\ICell.cs" />
     <Compile Include="Assets\Scripts\ITileMap.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scripts\PlayerKeyboardController.cs" />
     <Compile Include="Assets\Scripts\Selection.cs" />
     <Compile Include="Assets\Scripts\TerrainGenerator.cs" />
+    <Compile Include="Assets\Scripts\TileMapRender.cs" />
     <Compile Include="Assets\Scripts\Tree.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="UnityEngine">

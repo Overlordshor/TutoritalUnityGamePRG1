@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public GameObject Cell;
-    public Transform Zero;
+    public GroundTile Tile;
 
     private int height, width;
 
@@ -12,7 +11,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         int groundHeight = 4;
 
-        HeightMapBasedTileMap tileMap = new HeightMapBasedTileMap(width);
+        HeightMapBasedTileMap tileMap = new HeightMapBasedTileMap(width, Tile);
 
         for (int x = 0; x < width; x++)
         {
@@ -32,5 +31,6 @@ public class TerrainGenerator : MonoBehaviour
         height = 2;
         width = 50;
         var tileMap = Generate();
+        GetComponent<TileMapRender>().Render(tileMap);
     }
 }
