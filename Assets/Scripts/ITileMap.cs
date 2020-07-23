@@ -8,6 +8,6 @@ namespace CustomTileMap
         int Height { get; }
         int Width { get; }
 
-        ICell GetGetCell(Vector2Int position);
+        ICell GetCell(Vector2Int position);
     }
 }

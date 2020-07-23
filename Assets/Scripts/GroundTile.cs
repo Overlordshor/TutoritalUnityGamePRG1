@@ -12,8 +12,13 @@ namespace CustomTileMap
         {
             SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
             renderer.sprite = Other;
-
-            if (Exist(position + Vector2Int.right, tileMap)
+            if (!Exist(position + Vector2Int.right, tileMap)
+                && Exist(position + Vector2Int.left, tileMap)
+                && !Exist(position + Vector2Int.up, tileMap))
+            {
+                renderer.sprite = TopRight;
+            }
+            else if (Exist(position + Vector2Int.right, tileMap)
                 && Exist(position + Vector2Int.left, tileMap)
                 && !Exist(position + Vector2Int.up, tileMap))
             {
@@ -25,11 +30,29 @@ namespace CustomTileMap
             {
                 renderer.sprite = TopLeft;
             }
-            else if (!Exist(position + Vector2Int.right, tileMap)
+            else if (Exist(position + Vector2Int.right, tileMap)
                 && Exist(position + Vector2Int.left, tileMap)
-                && !Exist(position + Vector2Int.up, tileMap))
+                && Exist(position + Vector2Int.up, tileMap)
+                && !Exist(position + Vector2Int.up + Vector2Int.left, tileMap))
             {
-                renderer.sprite = TopRight;
+                renderer.sprite = Left;
+            }
+            else if (Exist(position + Vector2Int.right, tileMap)
+                && Exist(position + Vector2Int.left, tileMap)
+                && Exist(position + Vector2Int.up, tileMap)
+                && !Exist(position + Vector2Int.up + Vector2Int.right, tileMap))
+            {
+                renderer.sprite = Right;
+            }
+            else if (!Exist(position + Vector2Int.left, tileMap)
+                && Exist(position + Vector2Int.up, tileMap))
+            {
+                renderer.sprite = BottomLeft;
+            }
+            else if (!Exist(position + Vector2Int.right, tileMap)
+                && Exist(position + Vector2Int.up, tileMap))
+            {
+                renderer.sprite = BottomRight;
             }
         }
 
@@ -37,7 +60,7 @@ namespace CustomTileMap
         {
             if (position.x < 0 || position.x >= tileMap.Width) return false;
 
-            var tile = tileMap.GetGetCell(position);
+            var tile = tileMap.GetCell(position);
 
             return tile != null;
         }

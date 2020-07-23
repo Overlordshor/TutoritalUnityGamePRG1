@@ -15,7 +15,7 @@ namespace CustomTileMap
                 for (int y = 0; y < tileMap.Height; y++)
                 {
                     var position = new Vector2Int(x, y);
-                    var cell = tileMap.GetGetCell(position);
+                    var cell = tileMap.GetCell(position);
 
                     var cellGo = CreateEmpty(position);
                     cell?.Refresh(position, tileMap, cellGo);
@@ -28,7 +28,7 @@ namespace CustomTileMap
             GameObject result = new GameObject(position.ToString());
             var transform = result.GetComponent<Transform>();
             transform.parent = GetComponent<Transform>();
-            transform.localPosition = new Vector3(position.x, position.y, 0);
+            transform.localPosition = new Vector3(position.x, position.y, 200);
             result.AddComponent<SpriteRenderer>();
 
             return result;

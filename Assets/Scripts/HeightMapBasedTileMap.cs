@@ -23,22 +23,12 @@ namespace CustomTileMap
 
         public void SetHeight(int x, int value)
         {
-            if (x < 0 && x >= heights.Length)
-            {
-                throw new ArgumentOutOfRangeException("x");
-            }
-
             heights[x] = value;
         }
 
-        public ICell GetGetCell(Vector2Int position)
+        public ICell GetCell(Vector2Int position)
         {
-            if (position.x < 0 && position.x >= heights.Length)
-            {
-                throw new ArgumentOutOfRangeException("x");
-            }
-
-            if (position.y <= heights[position.x])
+            if (position.y < heights[position.x])
             {
                 return cell;
             }

@@ -9,7 +9,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public ITileMap Generate()
     {
-        int groundHeight = 4;
+        int groundHeight = 1;
 
         HeightMapBasedTileMap tileMap = new HeightMapBasedTileMap(width, Tile);
 
@@ -18,6 +18,10 @@ public class TerrainGenerator : MonoBehaviour
             if (x % 2 == 0)
             {
                 groundHeight += Random.Range(-1, height);
+                if (groundHeight < 1)
+                {
+                    groundHeight++;
+                }
             }
 
             tileMap.SetHeight(x, groundHeight);
