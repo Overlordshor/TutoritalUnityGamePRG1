@@ -7,6 +7,8 @@ public class TerrainGenerator : MonoBehaviour
 
     private int height, width;
 
+    [SerializeField] private bool isGenerateOnStart = true;
+
     public ITileMap Generate()
     {
         int groundHeight = 1;
@@ -30,11 +32,19 @@ public class TerrainGenerator : MonoBehaviour
         return tileMap;
     }
 
+    public void Render()
+    {
+        var tileMap = Generate();
+        GetComponent<TileMapRender>().Render(tileMap);
+    }
+
     private void Start()
     {
         height = 2;
         width = 50;
-        var tileMap = Generate();
-        GetComponent<TileMapRender>().Render(tileMap);
+        if (isGenerateOnStart)
+        {
+            Render();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace CustomTileMap
 {
@@ -6,9 +7,13 @@ namespace CustomTileMap
     {
         public void Render(ITileMap tileMap)
         {
-            foreach (Transform child in transform)
+            foreach (Transform child in transform.OfType<Transform>().ToList())
             {
+#if UNITY_EDITOR
+                DestroyImmediate(child.gameObject);
+#else
                 Destroy(child.gameObject);
+#endif
             }
             for (int x = 0; x < tileMap.Width; x++)
             {
