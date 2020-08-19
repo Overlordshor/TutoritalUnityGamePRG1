@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 namespace CustomTileMap
@@ -28,14 +27,7 @@ namespace CustomTileMap
 
         public ICell GetCell(Vector2Int position)
         {
-            if (position.y < heights[position.x])
-            {
-                return cell;
-            }
-            else
-            {
-                return null;
-            }
+            return position.y < heights[position.x] ? cell : null;
         }
     }
 }

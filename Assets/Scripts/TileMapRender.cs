@@ -28,7 +28,7 @@ namespace CustomTileMap
             }
         }
 
-        public GameObject CreateEmpty(Vector2Int position)
+        private GameObject CreateEmpty(Vector2Int position)
         {
             GameObject result = new GameObject(position.ToString());
             var transform = result.GetComponent<Transform>();
