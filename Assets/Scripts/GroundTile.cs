@@ -53,6 +53,9 @@ namespace CustomTileMap
             {
                 renderer.sprite = BottomRight;
             }
+
+            gameObject.AddComponent<PolygonCollider2D>().autoTiling = true;
+            gameObject.layer = 8; // Layer Ground;
         }
 
         private bool Exist(Vector2Int position, ITileMap tileMap)

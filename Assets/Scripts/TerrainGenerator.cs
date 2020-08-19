@@ -5,7 +5,7 @@ public class TerrainGenerator : MonoBehaviour
 {
     public GroundTile Tile;
 
-    private int height, width;
+    private int /*height,*/ width;
 
     [SerializeField] private bool isGenerateOnStart = true;
 
@@ -17,7 +17,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Start()
     {
-        height = 2; // Mountainousness
+        /*height = 2;*/ // Mountainousness
         width = 5; // Width of ground
         if (isGenerateOnStart)
         {
@@ -33,15 +33,15 @@ public class TerrainGenerator : MonoBehaviour
 
         for (int x = 0; x < width; x++)
         {
-            if (x % 2 == 0)
-            {
-                groundHeight += Random.Range(-1, height);
-                if (groundHeight < 1)
-                {
-                    groundHeight++;
-                }
-            }
-
+            //if (x % 2 == 0)
+            //{
+            //    groundHeight += Random.Range(-1, height);
+            //    if (groundHeight < 1)
+            //    {
+            //        groundHeight++;
+            //    }
+            //}
+            groundHeight = 1;
             tileMap.SetHeight(x, groundHeight);
         }
 
