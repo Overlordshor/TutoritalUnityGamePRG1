@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityScript.Scripting;
 
 namespace CustomTileMap
 {
