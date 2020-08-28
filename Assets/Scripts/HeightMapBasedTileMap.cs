@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Boo.Lang;
+using System.Linq;
 using UnityEngine;
 
 namespace CustomTileMap
@@ -11,8 +12,8 @@ namespace CustomTileMap
 
         public int Width => heights.Length;
 
-        private int[] heights;
-        private ICell cell;
+        private readonly int[] heights;
+        private readonly ICell cell;
 
         public HeightMapBasedTileMap(int width, ICell cell)
         {

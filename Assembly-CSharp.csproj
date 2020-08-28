@@ -72,6 +72,10 @@
     <Compile Include="Assets\Scripts\HeightMapBasedTileMap.cs" />
     <Compile Include="Assets\Scripts\ICell.cs" />
     <Compile Include="Assets\Scripts\ITileMap.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\InventoryCell.cs" />
+    <Compile Include="Assets\Scripts\Item\AssetItem.cs" />
+    <Compile Include="Assets\Scripts\Item\IItem.cs" />
     <Compile Include="Assets\Scripts\Player\DirectionState.cs" />
     <Compile Include="Assets\Scripts\Player\MoveState.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
