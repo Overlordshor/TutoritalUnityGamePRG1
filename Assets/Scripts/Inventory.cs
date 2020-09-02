@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
             var cell = Instantiate(inventoryCellTemplate, container);
             cell.InitializationParent(draggingParent);
             cell.Render(item);
+
+            cell.OutPutting += () => Destroy(cell.gameObject);
         });
     }
 }

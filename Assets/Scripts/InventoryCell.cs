@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
+    public Action OutPutting;
+
     [SerializeField] private Text nameField;
     [SerializeField] private Image iconField;
     private Transform draggingParent;
@@ -22,6 +24,30 @@ public class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBegi
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (In((RectTransform)originalParent))
+        {
+            InsertInGrid();
+        }
+        else
+        {
+            Output();
+        }
+    }
+
+    public void InitializationParent(Transform draggingParent)
+    {
+        this.draggingParent = draggingParent;
+        originalParent = transform.parent;
+    }
+
+    public void Render(IItem item)
+    {
+        nameField.text = item.Name;
+        iconField.sprite = item.UIIcon;
+    }
+
+    private void InsertInGrid()
+    {
         int closestIndex = 0;
 
         for (int i = 0; i < originalParent.transform.childCount; i++)
@@ -37,15 +63,13 @@ public class InventoryCell : MonoBehaviour, IDragHandler, IEndDragHandler, IBegi
         transform.SetSiblingIndex(closestIndex);
     }
 
-    public void InitializationParent(Transform draggingParent)
+    private bool In(RectTransform originalParent)
     {
-        this.draggingParent = draggingParent;
-        originalParent = transform.parent;
+        return originalParent.rect.Contains(transform.position);
     }
 
-    public void Render(IItem item)
+    private void Output()
     {
-        nameField.text = item.Name;
-        iconField.sprite = item.UIIcon;
+        OutPutting?.Invoke();
     }
 }
