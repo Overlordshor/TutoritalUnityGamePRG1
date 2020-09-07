@@ -15,7 +15,8 @@ namespace CustomTileMap
                 && Exist(position + Vector2Int.left, tileMap)
                 && !Exist(position + Vector2Int.up, tileMap))
             {
-                renderer.sprite = TopRight;
+                //renderer.sprite = TopRight;
+                renderer.sprite = Top;
             }
             else if (Exist(position + Vector2Int.right, tileMap)
                 && Exist(position + Vector2Int.left, tileMap)
@@ -27,22 +28,23 @@ namespace CustomTileMap
                 && !Exist(position + Vector2Int.left, tileMap)
                 && !Exist(position + Vector2Int.up, tileMap))
             {
-                renderer.sprite = TopLeft;
+                //renderer.sprite = TopLeft;
+                renderer.sprite = Top;
             }
-            else if (Exist(position + Vector2Int.right, tileMap)
-                && Exist(position + Vector2Int.left, tileMap)
-                && Exist(position + Vector2Int.up, tileMap)
-                && !Exist(position + Vector2Int.up + Vector2Int.left, tileMap))
-            {
-                renderer.sprite = Left;
-            }
-            else if (Exist(position + Vector2Int.right, tileMap)
-                && Exist(position + Vector2Int.left, tileMap)
-                && Exist(position + Vector2Int.up, tileMap)
-                && !Exist(position + Vector2Int.up + Vector2Int.right, tileMap))
-            {
-                renderer.sprite = Right;
-            }
+            //else if (Exist(position + Vector2Int.right, tileMap)
+            //    && Exist(position + Vector2Int.left, tileMap)
+            //    && Exist(position + Vector2Int.up, tileMap)
+            //    && !Exist(position + Vector2Int.up + Vector2Int.left, tileMap))
+            //{
+            //    renderer.sprite = Left;
+            //}
+            //else if (Exist(position + Vector2Int.right, tileMap)
+            //    && Exist(position + Vector2Int.left, tileMap)
+            //    && Exist(position + Vector2Int.up, tileMap)
+            //    && !Exist(position + Vector2Int.up + Vector2Int.right, tileMap))
+            //{
+            //    renderer.sprite = Right;
+            //}
             else if (!Exist(position + Vector2Int.left, tileMap)
                 && Exist(position + Vector2Int.up, tileMap))
             {
@@ -54,8 +56,8 @@ namespace CustomTileMap
                 renderer.sprite = BottomRight;
             }
 
-            gameObject.AddComponent<PolygonCollider2D>().autoTiling = true;
-            gameObject.layer = 8; // Layer Ground;
+            //gameObject.AddComponent<PolygonCollider2D>().autoTiling = true;
+            //gameObject.layer = 8; // Layer Ground;
         }
 
         private bool Exist(Vector2Int position, ITileMap tileMap)

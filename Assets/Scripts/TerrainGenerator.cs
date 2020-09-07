@@ -13,6 +13,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         var tileMap = Generate();
         GetComponent<TileMapRender>().Render(tileMap);
+        GetComponent<PolygonCollider2D>().points = tileMap.GetClosedMesh();
     }
 
     private void Start()
